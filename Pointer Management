@@ -1,0 +1,20 @@
+2.)	Pointer Management
+
+Describe the problem with this function: 
+void foo() 
+{ 
+	  	int *array = new int[100]; 
+      for(int i = 0; i < 100; i++) 
+      { 
+      /// Do something; 
+      } 
+} 
+
+- The function has a problem because it allocates memory but does not release it afterward.
+When "new int[100]" is used, it creates space in memory for 100 integers. But, the function 
+ends without using "delete[]" to free that allocated memory. Once the function finishes, the
+pointer array goes out of scope, so the program loses access to the address of that memory. 
+Even though the pointer disappears, the memory is still reserved in the system. 
+
+This situation leads to a memory leak, and if the function is called many times, the program 
+will continue using more and more memory unnecessarily.
